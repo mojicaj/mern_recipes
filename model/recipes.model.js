@@ -1,7 +1,7 @@
 let mongoose = require('mongoose')
 
-const server = 'ds157522.mlab.com:57522'
-const database = 'jm_dev'
+const server = process.env.DB_SERVER
+const database = process.env.DB
 const user = process.env.DB_USER
 const password = process.env.DB_PASSWORD
 
