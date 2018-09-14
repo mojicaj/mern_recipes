@@ -44,6 +44,17 @@ router.get('/recipe', (req, res) => {
     })
 })
 
+// Get all recipes
+router.get('/recipes', (req, res) => {
+    RecipeModel.find({})
+    .then(doc => {
+        res.json(doc)
+    })
+    .catch(err => {
+        res.status(500).json(err)
+    })
+})
+
 // Update a recipe => /recipe?recipe=<recipe name>
 router.put('/recipe', (req, res) => {
     if(!req.query.recipe) {
