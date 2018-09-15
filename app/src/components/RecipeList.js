@@ -5,7 +5,7 @@ import Recipe from "./Recipe";
 class RecipeList extends Component {
   render() {
     let recipes = this.props.data.map(recipe => {
-      return <Recipe recipe={recipe} key={recipe["_id"]} />;
+      return <Recipe recipe={recipe} key={recipe["_id"]} full={false} />;
     });
     return <div>{recipes}</div>;
   }

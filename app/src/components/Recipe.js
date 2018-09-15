@@ -3,46 +3,47 @@ import "./styles/App.css";
 import Ingredient from "./Ingredient";
 
 class Recipe extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      open: false
-    };
-  }
-
   render() {
-    const { open } = this.state;
+    const { recipe, full } = this.props;
     return (
-      <div
-        className="card"
-        onClick={() => this.setState({ open: !open })}
-        aria-controls="collapse-recipe"
-        aria-expanded={open}
-      >
-        <img src={this.props.recipe.image} />
-        <h3>{this.props.recipe.name}</h3>
-        <p>Servings: {this.props.recipe.servings}</p>
-        <p>Prep time: {this.props.recipe.prep}</p>
-        <p>Cook time: {this.props.recipe.cook}</p>
-        <h5>Ingredients:</h5>
-        <ul>
-          {this.props.recipe.ingredients.map(ingredient => {
-            return (
-              <li key={ingredient["_id"]}>
-                <Ingredient ingredient={ingredient} />
-              </li>
-            );
-          })}
-        </ul>
-        <h5>Directions:</h5>
-        <p>{this.props.recipe.instructions}</p>
+      <div>
+        {!full && <RecipeCard image={recipe.image} name={recipe.name} />}
+        {full && <RecipeFull recipe={recipe} />}
       </div>
     );
   }
 }
 
 export default Recipe;
+
+const RecipeCard = ({ image, name }) => (
+  <div className="card w-25">
+    <img className="card-img-top" src={image} alt={name} />
+    <h3 className="card-title">{name}</h3>
+  </div>
+);
+
+const RecipeFull = ({ recipe }) => (
+  <div>
+    <img src={recipe.image} />
+    <h3>{recipe.name}</h3>
+    <p>Servings: {recipe.servings}</p>
+    <p>Prep time: {recipe.prep}</p>
+    <p>Cook time: {recipe.cook}</p>
+    <h5>Ingredients:</h5>
+    <ul>
+      {recipe.ingredients.map(ingredient => {
+        return (
+          <li key={ingredient["_id"]}>
+            <Ingredient ingredient={ingredient} />
+          </li>
+        );
+      })}
+    </ul>
+    <h5>Directions:</h5>
+    <p>{recipe.instructions}</p>
+  </div>
+);
 
 /*
 Recipe JSON:
