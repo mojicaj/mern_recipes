@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './styles/App.css';
 import RecipeList from './RecipeList';
 
 class Recipes extends Component {
@@ -24,7 +25,7 @@ class Recipes extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div className="container-fluid">
                <RecipeList data={ this.state.data }/> 
             </div>
         )
