@@ -13,7 +13,7 @@ class Recipe extends Component {
                 <ul>
                 {this.props.recipe.ingredients.map(ingredient => {
                     return (
-                        <li><Ingredient ingredient={ingredient} key={ ingredient['_id']} /></li>
+                        <li key={ ingredient['_id']}><Ingredient ingredient={ingredient} /></li>
                     )
                 })}
                 </ul>
