@@ -2,10 +2,15 @@
   background-color: #d35400;
   height: 3em;
   color: #FFF;
+  display: flex;
+  justify-content: space-between;
 }
 
-.App-header h1 {
-  margin-left: 1em;
+.App-header button {
+  color: #10A056;
+  background: #f0f0f0;
+  height: 1.5em;
+  align-self: center;
 }
 
 .container-fluid {
