@@ -5,12 +5,11 @@ import Ingredient from "./Ingredient";
 class Recipe extends Component {
   render() {
     const { recipe, full } = this.props;
-    return (
-      <div>
-        {!full && <RecipeCard image={recipe.image} name={recipe.name} />}
-        {full && <RecipeFull recipe={recipe} />}
-      </div>
-    );
+    if (full) {
+      return <RecipeFull recipe={recipe} />;
+    } else {
+      return <RecipeCard image={recipe.image} name={recipe.name} />;
+    }
   }
 }
 

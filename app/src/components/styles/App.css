@@ -1,7 +1,7 @@
 .App-header {
-  background-color: aliceblue;
+  background-color: #d35400;
   height: 3em;
-  color: #f99e00;
+  color: #FFF;
 }
 
 .App-header h1 {
@@ -10,4 +10,19 @@
 
 .container-fluid {
   margin-top: 2em;
+}
+
+#recipe-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly
+}
+
+.card {
+  background: #d35400;
+  color:#FFF;
+}
+
+.card-title {
+  text-align: center;
 }
