@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./styles/App.css";
 import RecipeList from "./RecipeList";
+import RecipeForm from "./RecipeForm";
 
 class Recipes extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class Recipes extends Component {
     return (
       <div className="container-fluid">
         <RecipeList data={this.state.data} />
+        <RecipeForm toggleModal={this.props.toggleModal} />
       </div>
     );
   }

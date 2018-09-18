@@ -24,7 +24,7 @@ const RecipeCard = ({ image, name }) => (
 
 const RecipeFull = ({ recipe }) => (
   <div>
-    <img src={recipe.image} />
+    <img src={recipe.image} alt={recipe.name} />
     <h3>{recipe.name}</h3>
     <p>Servings: {recipe.servings}</p>
     <p>Prep time: {recipe.prep}</p>

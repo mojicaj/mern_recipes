@@ -7,10 +7,11 @@
 }
 
 .App-header button {
-  color: #10A056;
+  color: #008086;
   background: #f0f0f0;
   height: 1.5em;
   align-self: center;
+  padding: 0 .5em;
 }
 
 .container-fluid {
