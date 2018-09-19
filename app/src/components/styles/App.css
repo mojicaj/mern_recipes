@@ -32,3 +32,18 @@
 .card-title {
   text-align: center;
 }
+
+#ingredientsList {
+  justify-content: space-evenly;
+  font-size: .6em;
+}
+
+#ingredientForm input {
+  margin-right: .5em;
+}
+
+
+/* Utility classes */
+.w-40 {
+  width: 40%!important;
+}
