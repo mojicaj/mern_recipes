@@ -26,7 +26,10 @@ class Recipes extends Component {
     return (
       <div className="container-fluid">
         <RecipeList data={this.state.data} />
-        <RecipeForm toggleModal={this.props.toggleModal} />
+        <RecipeForm
+          updateData={this.getRecipes}
+          toggleModal={this.props.toggleModal}
+        />
       </div>
     );
   }
