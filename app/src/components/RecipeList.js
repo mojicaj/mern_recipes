@@ -1,14 +1,13 @@
-import React, { Component } from "react";
-import "./styles/App.css";
-import Recipe from "./Recipe";
+import React from "react";
 
-class RecipeList extends Component {
-  render() {
-    let recipes = this.props.data.map(recipe => {
-      return <Recipe recipe={recipe} key={recipe["_id"]} full={false} />;
-    });
-    return <div id="recipe-list">{recipes}</div>;
-  }
-}
+import { RecipeCard } from "./Recipe";
+
+const RecipeList = ({ data }) => {
+  let recipes = data.map(recipe => {
+    return <RecipeCard recipe={recipe} key={recipe["_id"]} full={false} />;
+  });
+
+  return <div id="recipe-list">{recipes}</div>;
+};
 
 export default RecipeList;

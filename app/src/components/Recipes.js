@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./styles/App.css";
+
 import RecipeList from "./RecipeList";
 import RecipeForm from "./RecipeForm";
 

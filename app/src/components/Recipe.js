@@ -1,27 +1,24 @@
-import React, { Component } from "react";
-import "./styles/App.css";
+import React from "react";
+import { Link } from "react-router-dom";
+
 import Ingredient from "./Ingredient";
 
-class Recipe extends Component {
-  render() {
-    const { recipe, full } = this.props;
-    if (full) {
-      return <RecipeFull recipe={recipe} />;
-    } else {
-      return <RecipeCard image={recipe.image} name={recipe.name} />;
-    }
-  }
-}
-
-export default Recipe;
-
-const RecipeCard = ({ image, name }) => (
+// Minimal display for recipe listings on home page
+const RecipeCard = ({ recipe }) => (
   <div className="card w-25">
-    <img className="card-img-top" src={image} alt={name} />
-    <h3 className="card-title">{name}</h3>
+    <Link
+      to={{
+        pathname: `/recipe/${recipe.name}`,
+        state: { recipe: recipe }
+      }}
+    >
+      <img className="card-img-top" src={recipe.image} alt={recipe.name} />
+      <h3 className="card-title">{recipe.name}</h3>
+    </Link>
   </div>
 );
 
+// Full display for individual recipe page
 const RecipeFull = ({ recipe }) => (
   <div>
     <img src={recipe.image} alt={recipe.name} />
@@ -44,24 +41,4 @@ const RecipeFull = ({ recipe }) => (
   </div>
 );
 
-/*
-Recipe JSON:
-{
-    "name": "Buffalo Wings",
-    "servings": "6",
-    "prep": "30 minutes",
-    "cook": "2 hours", 
-    "ingredients": [
-        {
-            "measurement": "1 lb",
-            "name": "Chicken wings"
-        },
-        {
-            "measurement": "3 cups",
-            "name": "Hot sauce"
-        }
-    ],
-    "instructions": "bake wings in oven at 300 degrees. Stir the pot, cover the wings",
-    "image": ""
-}
-*/
+export { RecipeCard, RecipeFull };
