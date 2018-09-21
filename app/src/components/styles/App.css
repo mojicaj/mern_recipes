@@ -36,6 +36,7 @@ a:hover {
 .card {
   background: #d35400;
   color:#FFF;
+  margin: 1em;
 }
 
 .card-title {
@@ -51,6 +52,34 @@ a:hover {
   margin-right: .5em;
 }
 
+.recipe {
+  margin-top: 2em;
+}
+
+.recipe .row {
+  margin-bottom: 2em;
+}
+
+.img-thumbnail {
+  background-color: #d35400;
+}
+
+.recipe h3 {
+  color: #008086;
+}
+
+.recipe h5 {
+  color: #00C8D3;
+}
+
+.info {
+  background: #ecf0f1;
+}
+
+.info h6 {
+  margin-top: 1em;
+  color: #c0392b;
+}
 
 /* Utility classes */
 .w-40 {
