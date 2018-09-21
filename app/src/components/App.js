@@ -41,8 +41,8 @@ class App extends Component {
             <Route
               exact
               path="/recipe/:recipe"
-              render={({ location }) => (
-                <RecipeFull recipe={location.state.recipe} full={true} />
+              render={({ location, history }) => (
+                <RecipeFull recipe={location.state.recipe} history={history} />
               )}
             />
           </Switch>

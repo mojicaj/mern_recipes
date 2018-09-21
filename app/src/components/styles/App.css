@@ -81,6 +81,14 @@ a:hover {
   color: #c0392b;
 }
 
+.modify {
+  text-align: right;
+}
+
+.modify button {
+  margin-right: .5em;
+}
+
 /* Utility classes */
 .w-40 {
   width: 40%!important;

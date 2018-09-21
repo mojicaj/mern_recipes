@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import Ingredient from "./Ingredient";
 
@@ -19,7 +20,7 @@ const RecipeCard = ({ recipe }) => (
 );
 
 // Full display for individual recipe page
-const RecipeFull = ({ recipe }) => (
+const RecipeFull = ({ recipe, history }) => (
   <div className="container w-75 recipe">
     <div className="row">
       <div className="col">
@@ -75,7 +76,28 @@ const RecipeFull = ({ recipe }) => (
         <p>{recipe.instructions}</p>
       </div>
     </div>
+    <div className="row modify">
+      <div className="col">
+        <button name="update" type="button" className="btn btn-warning">
+          Update
+        </button>
+        <button
+          name="delete"
+          type="button"
+          className="btn btn-danger"
+          onClick={() => deleteRecipe(recipe.name, history)}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
   </div>
 );
 
 export { RecipeCard, RecipeFull };
+
+function deleteRecipe(name, history) {
+  axios.delete(`http://localhost:3001/recipe?recipe=${name}`).then(res => {
+    history.push("/");
+  });
+}
