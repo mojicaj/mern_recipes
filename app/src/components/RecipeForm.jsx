@@ -14,31 +14,38 @@ class RecipeForm extends Component {
   addIngredient(e) {
     e.preventDefault();
 
-    // prepare form values as json conforming to ingredients model
-    let formData = {
-      "measurement": this.refs.measurement.value,
-      "name": this.refs.ingredient.value
-    }
+    // prepare form values as object conforming to ingredients model
+    if (this.refs.measurement.value !== "" && this.refs.ingredient.value !== "") {
+      let formData = {
+        "measurement": this.refs.measurement.value,
+        "name": this.refs.ingredient.value
+      }
 
-    // save ingredients as user adds them
-    this.setState({ ingredients: [...this.state.ingredients, formData] });
-    
-    // clear form values
-    this.refs.ingredient.value = "";
-    this.refs.measurement.value = "";
+      // save ingredients as user adds them
+      this.setState({ ingredients: [...this.state.ingredients, formData] });
+    }
   }
   
   addRecipe(e) {
     e.preventDefault();
+    document.getElementById('close').click();
     this.props.toggleModal();
 
+    let ingredients = this.state.ingredients;
+
+    if (this.state.ingredients.length === 0 ) {
+      ingredients = [{
+        "measurement": this.refs.measurement.value,
+        "name": this.refs.ingredient.value
+      }]
+    }
     // prepare form values as json conforming to recipes model
     let formData = {
       "name": this.refs.name.value,
       "servings": this.refs.servings.value,
       "prep": this.refs.prep.value,
       "cook": this.refs.cook.value,
-      "ingredients": this.state.ingredients,
+      "ingredients": ingredients,
       "instructions": this.refs.instructions.value,
       "image": this.refs.image.value
     }
@@ -54,6 +61,8 @@ class RecipeForm extends Component {
     this.refs.prep.value = "";
     this.refs.cook.value = "";
     this.setState({ ingredients: [] });
+    this.refs.ingredient.value = "";
+    this.refs.measurement.value = "";
     this.refs.instructions.value = "";
     this.refs.image.value = "";
   }
@@ -67,12 +76,12 @@ class RecipeForm extends Component {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="recipeModalLabel">New Recipe</h5>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={toggleModal}>
+              <button type="button" id="close" className="close" data-dismiss="modal" aria-label="Close" onClick={toggleModal}>
               <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div className="modal-body">
-              <form id="newRecipeForm">
+              <form id="newRecipeForm" onSubmit={this.addRecipe}>
                 <input ref="name" type="text" className="form-control form-group" placeholder="Name" required />
                 <input ref="servings" type="text" className="form-control form-group" placeholder="Servings" required />
                 <input ref="prep" type="text" className="form-control form-group" placeholder="Prep Time" />
@@ -90,13 +99,11 @@ class RecipeForm extends Component {
                 </div>
                 <textarea ref="instructions" name="directions" id="directionsForm" cols="30" rows="5" className="form-control form-group" placeholder="Directions" required></textarea>
                 <input ref="image" type="text" className="form-control form-group" placeholder="Image link" />
-                <button type="submit" style={{display:"none"}} disabled></button>
               </form>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={toggleModal}>Close</button>
-              <button type="submit" form="newRecipeForm" className="btn btn-primary" data-toggle="modal"
-data-target="#recipeModal" onClick={this.addRecipe}>Add Recipe</button>
+              <button type="submit" form="newRecipeForm" className="btn btn-primary">Add Recipe</button>
             </div>
           </div>
         </div>
