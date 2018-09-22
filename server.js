@@ -1,14 +1,15 @@
 require("dotenv").config();
 
-let express = require("express");
-let app = express();
-let routes = require("./routes/routes");
-let bodyParser = require("body-parser");
+const express = require("express");
+const app = express();
+const routes = require("./routes/routes");
+const bodyParser = require("body-parser");
+const path = require("path");
 const PORT = process.env.PORT || 3001;
 
 app.use(bodyParser.json());
 
-app.use(express.static("/app/public/"));
+// app.use(express.static("/app/public/"));
 
 app.use(function(req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -25,5 +26,15 @@ app.use(function(req, res, next) {
 });
 
 app.use(routes);
+
+// Serve static assets if in production
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static("app/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "app", "build", "index.html"));
+  });
+}
 
 app.listen(PORT, () => console.info(`Server has started on ${PORT}`));

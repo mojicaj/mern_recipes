@@ -4,7 +4,8 @@
   "description": "Recipe keeper built with MERN",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js && app/react-scripts start",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix app && npm run build --prefix app"
   },
   "repository": {
     "type": "git",
