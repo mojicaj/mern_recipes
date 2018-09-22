@@ -2,12 +2,12 @@ import React from "react";
 
 import { RecipeCard } from "./Recipe";
 
-const RecipeList = ({ data }) => {
-  let recipes = data.map(recipe => {
-    return <RecipeCard recipe={recipe} key={recipe["_id"]} full={false} />;
+const RecipeList = ({ recipes }) => {
+  let allRecipes = recipes.map(recipe => {
+    return <RecipeCard recipe={recipe} key={recipe["_id"]} />;
   });
 
-  return <div id="recipe-list">{recipes}</div>;
+  return <div id="recipe-list">{allRecipes}</div>;
 };
 
 export default RecipeList;

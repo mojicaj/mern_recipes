@@ -21,7 +21,7 @@ const RecipeCard = ({ recipe }) => (
 );
 
 // Full display for individual recipe page
-const RecipeFull = ({ recipe, history }) => (
+const RecipeFull = ({ recipe, history, updateRecipes }) => (
   <div className="container w-75 recipe">
     <div className="row">
       <div className="col">
@@ -93,7 +93,7 @@ const RecipeFull = ({ recipe, history }) => (
           name="delete"
           type="button"
           className="btn btn-danger"
-          onClick={() => deleteRecipe(recipe.name, history)}
+          onClick={() => deleteRecipe(recipe.name, history, updateRecipes)}
         >
           Delete
         </button>
@@ -102,15 +102,17 @@ const RecipeFull = ({ recipe, history }) => (
     <UpdateRecipe
       recipe={recipe}
       toggleUpdateModal={toggleUpdateModal}
-      navHistory={history}
+      history={history}
+      updateRecipes={updateRecipes}
     />
   </div>
 );
 
 export { RecipeCard, RecipeFull };
 
-function deleteRecipe(name, history) {
-  axios.delete(`http://localhost:3001/recipe?recipe=${name}`).then(res => {
+function deleteRecipe(name, history, updateRecipes) {
+  axios.delete(`http://localhost:3001/recipe?recipe=${name}`).then(() => {
+    updateRecipes();
     history.push("/");
   });
 }
