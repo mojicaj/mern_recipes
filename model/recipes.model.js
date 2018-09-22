@@ -5,7 +5,9 @@ const database = process.env.DB;
 const user = process.env.DB_USER;
 const password = process.env.DB_PASSWORD;
 
-mongoose.connect(`mongodb://${user}:${password}@${server}/${database}`);
+mongoose
+  .connect(`mongodb://${user}:${password}@${server}/${database}`)
+  .catch(err => console.error(err));
 
 let Ingredient = new mongoose.Schema({
   measurement: {

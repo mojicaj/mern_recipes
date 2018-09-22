@@ -2,7 +2,7 @@ import axios from "axios";
 
 function getRecipes() {
   return axios
-    .get("http://localhost:3001/recipes")
+    .get("/recipes")
     .then(res => {
       return res.data;
     })
