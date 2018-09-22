@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+
 import "./styles/App.css";
 import Recipes from "./Recipes";
 import { RecipeFull } from "./Recipe";
+import RecipeForm from "./RecipeForm";
 
 class App extends Component {
   constructor(props) {
@@ -20,7 +22,9 @@ class App extends Component {
         <div className="App">
           <header className="App-header px-3">
             <h1>
-              <Link to={"/"}>Good Eats</Link>
+              <Link to={"/"} id="home">
+                Good Eats
+              </Link>
             </h1>
             <button
               type="button"
@@ -32,6 +36,7 @@ class App extends Component {
               New Recipe
             </button>
           </header>
+          <RecipeForm toggleModal={this.toggleModal} />
           <Switch>
             <Route
               exact

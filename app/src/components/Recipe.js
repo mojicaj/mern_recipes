@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import Ingredient from "./Ingredient";
+import UpdateRecipe from "./UpdateRecipe";
 
 // Minimal display for recipe listings on home page
 const RecipeCard = ({ recipe }) => (
@@ -78,7 +79,14 @@ const RecipeFull = ({ recipe, history }) => (
     </div>
     <div className="row modify">
       <div className="col">
-        <button name="update" type="button" className="btn btn-warning">
+        <button
+          name="update"
+          type="button"
+          className="btn btn-warning"
+          data-toggle="modal"
+          data-target="#updateModal"
+          onClick={toggleUpdateModal}
+        >
           Update
         </button>
         <button
@@ -91,6 +99,11 @@ const RecipeFull = ({ recipe, history }) => (
         </button>
       </div>
     </div>
+    <UpdateRecipe
+      recipe={recipe}
+      toggleUpdateModal={toggleUpdateModal}
+      navHistory={history}
+    />
   </div>
 );
 
@@ -100,4 +113,8 @@ function deleteRecipe(name, history) {
   axios.delete(`http://localhost:3001/recipe?recipe=${name}`).then(res => {
     history.push("/");
   });
+}
+
+function toggleUpdateModal() {
+  document.getElementById("updateModal").classList.toggle("show");
 }
