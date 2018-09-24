@@ -66,12 +66,7 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={() => (
-                <Recipes
-                  toggleModal={this.toggleModal}
-                  recipes={this.state.recipes}
-                />
-              )}
+              render={() => <Recipes recipes={this.state.recipes} />}
             />
             <Route
               exact

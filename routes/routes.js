@@ -1,7 +1,6 @@
 let RecipeModel = require("../model/recipes.model");
 let express = require("express");
 let router = express.Router();
-let path = require("path");
 
 // Create a new recipe
 router.post("/recipe", (req, res) => {
@@ -92,25 +91,3 @@ router.delete("/recipe", (req, res) => {
 });
 
 module.exports = router;
-
-/*
-Recipe JSON:
-{
-    "name": "Buffalo Wings",
-    "servings": "6",
-    "prep": "30 minutes",
-    "cook": "2 hours", 
-    "ingredients": [
-        {
-            "measurement": "1 lb",
-            "name": "Chicken wings"
-        },
-        {
-            "measurement": "3 cups",
-            "name": "Hot sauce"
-        }
-    ],
-    "instructions": "bake wings in oven at 300 degrees. Stir the pot, cover the wings",
-    "image": ""
-}
-*/
