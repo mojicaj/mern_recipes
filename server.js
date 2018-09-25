@@ -9,6 +9,8 @@ const PORT = process.env.PORT || 3001;
 
 app.use(bodyParser.json());
 
+app.use(routes);
+
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
   // Set static folder
@@ -18,7 +20,5 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "app", "build", "index.html"));
   });
 }
-
-app.use(routes);
 
 app.listen(PORT, () => console.info(`Server has started on ${PORT}`));

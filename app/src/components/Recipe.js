@@ -111,7 +111,7 @@ const RecipeFull = ({ recipe, history, updateRecipes }) => (
 export { RecipeCard, RecipeFull };
 
 function deleteRecipe(name, history, updateRecipes) {
-  axios.delete(`/recipe?recipe=${name}`).then(() => {
+  axios.delete(`/api/recipe?recipe=${name}`).then(() => {
     updateRecipes();
     history.push("/");
   });

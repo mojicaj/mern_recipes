@@ -51,7 +51,7 @@ class UpdateRecipe extends Component {
     }
     
     // update recipe in the DB and update Recipe
-    axios.put(`/recipe?recipe=${this.props.recipe.name}`, formData).then(() => {
+    axios.put(`/api/recipe?recipe=${this.props.recipe.name}`, formData).then(() => {
       this.props.updateRecipes()
       this.props.history.push("/");
     }).catch(err => {throw err});

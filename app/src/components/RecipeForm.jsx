@@ -51,7 +51,7 @@ class RecipeForm extends Component {
     }
 
     // add new recipe to DB and update Recipes
-    axios.post("/recipe", formData).then(() => {
+    axios.post("/api/recipe", formData).then(() => {
       this.props.updateRecipes();
       document.getElementById('home').click();
     }).catch(err => {throw err});

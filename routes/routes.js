@@ -3,7 +3,7 @@ let express = require("express");
 let router = express.Router();
 
 // Create a new recipe
-router.post("/recipe", (req, res) => {
+router.post("/api/recipe", (req, res) => {
   if (!req.body) {
     return res.status(400).send("Request body is missing");
   }
@@ -22,8 +22,8 @@ router.post("/recipe", (req, res) => {
     });
 });
 
-// Get a recipe => /recipe?recipe=<recipe name>
-router.get("/recipe", (req, res) => {
+// Get a recipe => /api/recipe?recipe=<recipe name>
+router.get("/api/recipe", (req, res) => {
   if (!req.query.recipe) {
     return res.status(400).send("Missing URL parameter: recipe");
   }
@@ -40,7 +40,7 @@ router.get("/recipe", (req, res) => {
 });
 
 // Get all recipes
-router.get("/recipes", (req, res) => {
+router.get("/api/recipes", (req, res) => {
   RecipeModel.find({})
     .then(doc => {
       res.json(doc);
@@ -50,8 +50,8 @@ router.get("/recipes", (req, res) => {
     });
 });
 
-// Update a recipe => /recipe?recipe=<recipe name>
-router.put("/recipe", (req, res) => {
+// Update a recipe => /api/recipe?recipe=<recipe name>
+router.put("/api/recipe", (req, res) => {
   if (!req.query.recipe) {
     return res.status(400).send("Missing URL parameter: recipe");
   }
@@ -73,8 +73,8 @@ router.put("/recipe", (req, res) => {
     });
 });
 
-// Delete a recipe => /recipe?recipe=<recipe name>
-router.delete("/recipe", (req, res) => {
+// Delete a recipe => /api/recipe?recipe=<recipe name>
+router.delete("/api/recipe", (req, res) => {
   if (!req.query.recipe) {
     return res.status(400).send("Missing URL parameter: recipe");
   }
