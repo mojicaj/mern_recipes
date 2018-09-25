@@ -15,7 +15,9 @@ const RecipeCard = ({ recipe }) => (
       }}
     >
       <img className="card-img-top" src={recipe.image} alt={recipe.name} />
-      <h3 className="card-title">{recipe.name}</h3>
+      <div className="card-body">
+        <h3 className="card-title">{recipe.name}</h3>
+      </div>
     </Link>
   </div>
 );
